@@ -3,69 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alulutho Mihlali Dumani - Full-Stack Developer</title>
+    <title>Alulutho Mihlali Dumani - Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
             --background-color: #ffffff;
-            --text-color: #000000;
-            --accent-color: #000000;
-            --section-bg-dark: #413F3F;
-            --section-bg-light: #C5C5C5;
+            --text-color: #333333;
+            --accent-color: #0072ff;
+            --section-bg-dark: #f8f9fa;
+            --section-bg-light: #e9ecef;
             --card-bg: #ffffff;
-            --card-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            --timeline-bg: #413F3F;
-            --timeline-color: #ffffff;
+            --card-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            --timeline-bg: #f8f9fa;
+            --timeline-color: #333333;
             --form-bg: #222;
             --form-color: #ffffff;
             --footer-bg: #111;
             --footer-color: #ffffff;
             --projects-bg: #ffffff;
-            --projects-text: #000000;
+            --projects-text: #333333;
             --project-card-bg: #ffffff;
             --project-tag-bg: #f1f1f1;
             --project-tag-text: #333;
-            --project-link-color: #000000;
+            --project-link-color: #0072ff;
             --carousel-item-bg: rgba(255, 255, 255, 0.1);
             --carousel-item-border: rgba(255, 255, 255, 0.2);
             --carousel-icon-bg: linear-gradient(45deg, #00c6ff, #0072ff);
-            --title-line-color: #000000;
+            --title-line-color: #0072ff;
+            --timeline-dot: #0072ff;
+            --timeline-line: #0072ff;
         }
         
         .dark-mode {
             --background-color: #121212;
-            --text-color: #ffffff;
-            --accent-color: #ffffff;
+            --text-color: #e0e0e0;
+            --accent-color: #00c6ff;
             --section-bg-dark: #1e1e1e;
             --section-bg-light: #2a2a2a;
             --card-bg: #1e1e1e;
             --card-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            --timeline-bg: #413F3F;
-            --timeline-color: #ffffff;
+            --timeline-bg: #1e1e1e;
+            --timeline-color: #e0e0e0;
             --form-bg: #333;
             --form-color: #ffffff;
             --footer-bg: #000000;
             --footer-color: #ffffff;
             --projects-bg: #1e1e1e;
-            --projects-text: #ffffff;
+            --projects-text: #e0e0e0;
             --project-card-bg: #2a2a2a;
             --project-tag-bg: #444;
             --project-tag-text: #ffffff;
-            --project-link-color: #ffffff;
+            --project-link-color: #00c6ff;
             --carousel-item-bg: rgba(30, 30, 30, 0.7);
             --carousel-item-border: rgba(255, 255, 255, 0.1);
             --carousel-icon-bg: linear-gradient(45deg, #ff416c, #ff4b2b);
-            --title-line-color: #ffffff;
+            --title-line-color: #00c6ff;
+            --timeline-dot: #00c6ff;
+            --timeline-line: #00c6ff;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Raleway', 'Montserrat', sans-serif;
             transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
         }
         
@@ -77,6 +81,7 @@
             background-color: var(--background-color);
             color: var(--text-color);
             overflow-x: hidden;
+            line-height: 1.6;
         }
         
         /* Navigation */
@@ -205,7 +210,7 @@
         }
         
         input:checked + .toggle-slider {
-            background-color: #2196F3;
+            background-color: var(--accent-color);
         }
         
         input:checked + .toggle-slider:before {
@@ -232,16 +237,26 @@
             display: flex;
             align-items: center;
             padding-top: 60px;
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #001510);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
             color: white;
+            background: linear-gradient(135deg, #1a2a6c, #001510);
+            background-size: cover;
+            position: relative;
+            z-index: 1;
         }
         
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: -1;
+        }
+        
+        .dark-mode .hero {
+            background: linear-gradient(135deg, #0a122e, #000d08);
         }
         
         .hero-content {
@@ -254,7 +269,7 @@
             font-weight: 800;
             margin-bottom: 1rem;
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            background: linear-gradient(45deg, #00c6ff, #ffffff);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -390,7 +405,6 @@
         .about {
             padding: 5rem 0;
             background-color: var(--section-bg-dark);
-            color: white;
         }
         
         .section-title {
@@ -398,9 +412,9 @@
             text-align: center;
             margin-bottom: 3rem;
             position: relative;
+            font-weight: 700;
         }
         
-        /* Animated line under section titles */
         .section-title::after {
             content: '';
             position: absolute;
@@ -434,7 +448,7 @@
             text-align: center;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
         
         .about-img img {
@@ -442,6 +456,7 @@
             height: auto;
             display: block;
             transition: transform 0.5s ease;
+            border-radius: 15px;
         }
         
         .about-img img:hover {
@@ -460,165 +475,166 @@
             font-size: 1.1rem;
         }
         
-        /* Timeline */
-        .timeline {
+        /* Modern Chronological Timeline */
+        .timeline-section {
+            padding: 5rem 0;
+            background-color: var(--section-bg-light);
+        }
+        
+        .modern-timeline {
             position: relative;
-            max-width: 1200px;
-            margin: 4rem auto;
+            max-width: 900px;
+            margin: 0 auto;
             padding: 0 20px;
         }
         
-        .timeline::before {
+        .modern-timeline::before {
             content: '';
             position: absolute;
             top: 0;
             bottom: 0;
             left: 50%;
-            width: 4px;
-            background: var(--accent-color);
             transform: translateX(-50%);
+            width: 3px;
+            background: var(--timeline-line);
             z-index: 1;
         }
         
         .timeline-item {
             position: relative;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
             width: 100%;
-            display: flex;
-            justify-content: flex-start;
-            align-items: flex-start;
-            padding-left: 50%;
-            box-sizing: border-box;
+            z-index: 2;
         }
         
-        .timeline-item:nth-child(even) {
-            justify-content: flex-end;
-            padding-left: 0;
-            padding-right: 50%;
+        .timeline-dot {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--background-color);
+            border: 4px solid var(--timeline-dot);
+            z-index: 3;
+            box-shadow: 0 0 0 6px rgba(0, 114, 255, 0.1);
         }
         
         .timeline-content {
-            position: relative;
-            width: calc(50% - 60px);
+            width: 45%;
             padding: 25px;
-            background: var(--card-bg);
-            border-radius: 10px;
-            box-shadow: var(--card-shadow);
-            color: var(--text-color);
-            z-index: 2;
+            background: var(--background-color);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
         }
         
-        .timeline-item::after {
+        .timeline-content::before {
             content: '';
             position: absolute;
-            width: 25px;
-            height: 25px;
-            background: var(--accent-color);
-            border-radius: 50%;
-            top: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 3;
-            box-shadow: 0 0 0 5px rgba(255, 107, 53, 0.3);
-        }
-        
-        .timeline-item:nth-child(even)::after {
-            left: auto;
-            right: 50%;
-            transform: translateX(50%);
-        }
-        
-        /* Curved Connector Lines */
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            width: 50%;
-            height: 2px;
-            background: var(--accent-color);
-            top: 27px;
-            z-index: 2;
-        }
-        
-        .timeline-item:nth-child(odd)::before {
+            top: 0;
             left: 0;
-            border-top-left-radius: 10px;
-            border-bottom-left-radius: 10px;
-        }
-        
-        .timeline-item:nth-child(even)::before {
-            right: 0;
-            border-top-right-radius: 10px;
-            border-bottom-right-radius: 10px;
-        }
-        
-        /* Curved connectors between items */
-        .timeline-connector {
-            position: absolute;
-            left: 50%;
             width: 4px;
+            height: 100%;
             background: var(--accent-color);
-            z-index: 1;
-            transform: translateX(-50%);
         }
         
-        .timeline-item:not(:last-child) .timeline-connector {
-            height: calc(100% + 50px);
-            top: 40px;
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 0;
+            margin-right: 55%;
         }
         
-        /* Curved connector ends */
-        .timeline-connector::before,
-        .timeline-connector::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            border: 4px solid var(--accent-color);
-            border-radius: 50%;
-            background: white;
-            z-index: 2;
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 55%;
+            margin-right: 0;
         }
         
-        .timeline-connector::before {
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .timeline-connector::after {
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
+        .timeline-content:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
         }
         
         .timeline-date {
             font-weight: 600;
             margin-bottom: 0.5rem;
-            color: #00c6ff;
+            color: var(--accent-color);
+            font-size: 1.1rem;
         }
         
         .timeline-title {
             font-weight: 700;
             margin-bottom: 0.5rem;
             font-size: 1.4rem;
+            color: var(--text-color);
+        }
+        
+        .timeline-position {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        
+        .timeline-location {
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+            color: var(--text-color);
+        }
+        
+        .timeline-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: var(--accent-color);
         }
         
         /* Skills Section */
         .skills {
             padding: 5rem 0;
-            background-color: var(--section-bg-light);
+            background-color: var(--section-bg-dark);
         }
         
-        /* 3D Carousel Styles */
+        .skills-section {
+            width: 100%;
+            padding: 60px 0 0 0;
+            background: none;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .skills-section .header {
+            text-align: center;
+            margin-bottom: 50px;
+            max-width: 800px;
+        }
+        .skills-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .skills-section .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 15px;
+        }
         .carousel-container {
             width: 100%;
+            max-width: 1200px;
             height: 500px;
             perspective: 1500px;
             position: relative;
-            margin: 0 auto 3rem;
-            overflow: hidden;
+            margin: 0 auto;
         }
-        
         .carousel {
             width: 100%;
             height: 100%;
@@ -626,15 +642,14 @@
             transform-style: preserve-3d;
             transition: transform 1s cubic-bezier(0.17, 0.67, 0.1, 0.97);
         }
-        
         .carousel-item {
             position: absolute;
-            width: 280px;
-            height: 360px;
+            width: 300px;
+            height: 380px;
             left: 50%;
             top: 50%;
-            margin-left: -140px;
-            margin-top: -180px;
+            margin-left: -150px;
+            margin-top: -190px;
             border-radius: 20px;
             display: flex;
             flex-direction: column;
@@ -642,21 +657,19 @@
             justify-content: center;
             padding: 30px;
             text-align: center;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            background: var(--carousel-item-bg);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            border: 1px solid var(--carousel-item-border);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             transition: all 0.5s ease;
             transform-origin: center center;
         }
-        
         .carousel-item:hover {
             transform: translateZ(50px) !important;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            background: var(--background-color);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            background: rgba(255, 255, 255, 0.15);
         }
-        
-        .skill-icon {
+        .icon {
             font-size: 4rem;
             margin-bottom: 20px;
             width: 100px;
@@ -665,99 +678,96 @@
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            background: var(--carousel-icon-bg);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            color: white;
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            box-shadow: 0 5px 15px rgba(0, 114, 255, 0.4);
         }
-        
         .skill-title {
             font-size: 1.8rem;
             font-weight: 600;
             margin-bottom: 15px;
-            background: linear-gradient(45deg, var(--text-color), #c2e9fb);
+            background: linear-gradient(45deg, #fff, #c2e9fb);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
-        
         .skill-description {
             font-size: 1rem;
             opacity: 0.9;
             line-height: 1.6;
-            color: var(--text-color);
-            margin-bottom: 15px;
         }
-        
-        .skill-level {
+        .level {
             width: 100%;
             height: 8px;
-            background: rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 4px;
             margin-top: 20px;
             overflow: hidden;
         }
-        
         .level-bar {
             height: 100%;
-            background: var(--carousel-icon-bg);
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
             border-radius: 4px;
         }
-        
-        .carousel-nav {
+        .navigation {
             display: flex;
             justify-content: center;
-            margin-top: 30px;
+            margin-top: 40px;
             gap: 20px;
         }
-        
         .nav-btn {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            background: var(--background-color);
-            border: 2px solid var(--accent-color);
-            color: var(--accent-color);
-            font-size: 1.2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            font-size: 1.5rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
         }
-        
         .nav-btn:hover {
-            background: var(--accent-color);
-            color: var(--background-color);
+            background: rgba(255, 255, 255, 0.2);
             transform: scale(1.1);
         }
-        
-        .carousel-indicators {
+        .indicators {
             display: flex;
             gap: 10px;
             margin-top: 20px;
-            justify-content: center;
         }
-        
         .indicator {
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.3);
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        
         .indicator.active {
-            background: var(--accent-color);
+            background: #00c6ff;
             transform: scale(1.2);
+        }
+        @media (max-width: 768px) {
+            .skills-section h2 {
+                font-size: 2rem;
+            }
+            .carousel-container {
+                height: 400px;
+            }
+            .carousel-item {
+                width: 250px;
+                height: 330px;
+                margin-left: -125px;
+                margin-top: -165px;
+            }
         }
         
         /* Projects Section */
         .projects {
             padding: 5rem 0;
             background-color: var(--projects-bg);
-            color: var(--projects-text);
         }
         
         .projects-grid {
@@ -771,14 +781,14 @@
             background-color: var(--project-card-bg);
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: all 0.4s ease;
             position: relative;
         }
         
         .project-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
         
         .project-img {
@@ -1047,30 +1057,22 @@
                 transform: translateY(-8px) rotate(-45deg);
             }
             
-            .timeline::before {
-                left: 31px;
-            }
-            
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-            
-            .timeline-left::after,
-            .timeline-right::after {
+            .modern-timeline::before {
                 left: 20px;
             }
             
-            .timeline-left::before,
-            .timeline-right::before {
-                left: 60px;
-                border-width: 10px 10px 10px 0;
-                border-color: transparent white transparent transparent;
+            .timeline-item {
+                margin-left: 40px;
             }
             
-            .timeline-right {
-                left: 0;
+            .timeline-dot {
+                left: 20px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 40px);
+                margin-left: 0 !important;
+                margin-right: 0 !important;
             }
             
             .hero-title {
@@ -1079,17 +1081,6 @@
             
             .hero-subtitle {
                 font-size: 1.4rem;
-            }
-            
-            .carousel-container {
-                height: 400px;
-            }
-            
-            .carousel-item {
-                width: 250px;
-                height: 330px;
-                margin-left: -125px;
-                margin-top: -165px;
             }
         }
     </style>
@@ -1102,6 +1093,7 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#timeline">Timeline</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -1161,47 +1153,89 @@
                     <p>When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or mentoring aspiring developers. I believe in the power of technology to transform lives and am excited to be part of that transformation.</p>
                 </div>
             </div>
-            
-            <!-- Timeline -->
-            <h3 class="section-title" style="margin-top: 4rem;">Education & Experience</h3>
-            <div class="timeline">
-                <!-- Education -->
-                <div class="timeline-item timeline-left">
+        </div>
+    </section>
+    
+    <!-- Timeline Section -->
+    <section id="timeline" class="timeline-section">
+        <div class="container">
+            <h2 class="section-title">Experience & Education</h2>
+            <div class="modern-timeline">
+                <!-- Experience Items -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <span class="timeline-date">2017 - 2021</span>
-                        <h3 class="timeline-title">Bachelor of Science in Computer Science</h3>
-                        <p>University of Technology</p>
-                        <p>Focused on software engineering, algorithms, and data structures.</p>
+                        <i class="fas fa-briefcase timeline-icon"></i>
+                        <span class="timeline-date">Sep 2024 - Present</span>
+                        <h3 class="timeline-title">Life Choices Academy</h3>
+                        <p class="timeline-position">Full-Stack Developer</p>
+                        <p class="timeline-location">Cape Town, Western Cape</p>
                     </div>
                 </div>
                 
-                <!-- Experience 1 -->
-                <div class="timeline-item timeline-right">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <span class="timeline-date">2021 - 2022</span>
-                        <h3 class="timeline-title">Junior Web Developer</h3>
-                        <p>Tech Solutions Inc.</p>
-                        <p>Developed and maintained client websites using HTML, CSS, JavaScript, and various CMS platforms.</p>
+                        <i class="fas fa-briefcase timeline-icon"></i>
+                        <span class="timeline-date">Jan 2022 - May 2022</span>
+                        <h3 class="timeline-title">Census Enumerator</h3>
+                        <p class="timeline-location">Komani, Eastern Cape</p>
                     </div>
                 </div>
                 
-                <!-- Experience 2 -->
-                <div class="timeline-item timeline-left">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <span class="timeline-date">2022 - 2024</span>
-                        <h3 class="timeline-title">Full-Stack Developer</h3>
-                        <p>Innovative Apps Ltd.</p>
-                        <p>Built scalable web applications using React, Node.js, and MongoDB. Implemented RESTful APIs and improved application performance.</p>
+                        <i class="fas fa-briefcase timeline-icon"></i>
+                        <span class="timeline-date">Jan 2019 - Dec 2019</span>
+                        <h3 class="timeline-title">Edunova</h3>
+                        <p class="timeline-position">Educational Facilitator</p>
+                        <p class="timeline-location">Cape Town, Western Cape</p>
                     </div>
                 </div>
                 
-                <!-- Experience 3 -->
-                <div class="timeline-item timeline-right">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <span class="timeline-date">2024 - Present</span>
-                        <h3 class="timeline-title">Senior Full-Stack Developer</h3>
-                        <p>Global Tech Solutions</p>
-                        <p>Leading development teams in building enterprise-level applications. Architecting system solutions and implementing best practices.</p>
+                        <i class="fas fa-briefcase timeline-icon"></i>
+                        <span class="timeline-date">Nov 2023 - Aug 2024</span>
+                        <h3 class="timeline-title">WTD (What The Denim)</h3>
+                        <p class="timeline-position">Sales Representative</p>
+                        <p class="timeline-location">Centurion Pretoria</p>
+                    </div>
+                </div>
+                
+                <!-- Education Items -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <i class="fas fa-graduation-cap timeline-icon"></i>
+                        <span class="timeline-date">Dec 2023</span>
+                        <h3 class="timeline-title">IKHALA TVET College</h3>
+                        <p class="timeline-position">N6 Management Assistant</p>
+                        <p class="timeline-location">Komani, Eastern Cape</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <i class="fas fa-graduation-cap timeline-icon"></i>
+                        <span class="timeline-date">Dec 2016</span>
+                        <h3 class="timeline-title">Hexagon High School</h3>
+                        <p class="timeline-position">Matric</p>
+                        <p class="timeline-location">Komani, Eastern Cape</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <i class="fas fa-graduation-cap timeline-icon"></i>
+                        <span class="timeline-date">Apr 2025</span>
+                        <h3 class="timeline-title">Life Choices Academy</h3>
+                        <p class="timeline-position">Coding Course (Full Stack)</p>
+                        <p class="timeline-location">Lansdowne, Cape Town</p>
                     </div>
                 </div>
             </div>
@@ -1209,100 +1243,382 @@
     </section>
     
     <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title">Skills</h2>
-            <div class="carousel-container">
-                <div class="carousel" id="carousel">
-                    <!-- Frontend Skills -->
-                    <div class="carousel-item">
-                        <div class="skill-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <h3 class="skill-title">Frontend Development</h3>
-                        <p class="skill-description">Building responsive and interactive user interfaces with modern frameworks.</p>
-                        <div class="skill-level">
-                            <div class="level-bar" style="width: 95%"></div>
-                        </div>
-                    </div>
-                    
-                    <!-- JavaScript -->
-                    <div class="carousel-item">
-                        <div class="skill-icon">
-                            <i class="fab fa-js"></i>
-                        </div>
-                        <h3 class="skill-title">JavaScript</h3>
-                        <p class="skill-description">Expert in ES6+, DOM manipulation, and modern JavaScript frameworks.</p>
-                        <div class="skill-level">
-                            <div class="level-bar" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    
-                    <!-- React -->
-                    <div class="carousel-item">
-                        <div class="skill-icon">
-                            <i class="fab fa-react"></i>
-                        </div>
-                        <h3 class="skill-title">React</h3>
-                        <p class="skill-description">Creating component-based applications with React ecosystem.</p>
-                        <div class="skill-level">
-                            <div class="level-bar" style="width: 85%"></div>
-                        </div>
-                    </div>
-                    
-                    <!-- UI/UX Design -->
-                    <div class="carousel-item">
-                        <div class="skill-icon">
-                            <i class="fas fa-paint-brush"></i>
-                        </div>
-                        <h3 class="skill-title">UI/UX Design</h3>
-                        <p class="skill-description">Designing intuitive and visually appealing user experiences.</p>
-                        <div class="skill-level">
-                            <div class="level-bar" style="width: 80%"></div>
-                        </div>
-                    </div>
-                    
-                    <!-- Backend Development -->
-                    <div class="carousel-item">
-                        <div class="skill-icon">
-                            <i class="fas fa-server"></i>
-                        </div>
-                        <h3 class="skill-title">Backend Development</h3>
-                        <p class="skill-description">Building RESTful APIs and server-side applications.</p>
-                        <div class="skill-level">
-                            <div class="level-bar" style="width: 75%"></div>
-                        </div>
-                    </div>
-                    
-                    <!-- Database Management -->
-                    <div class="carousel-item">
-                        <div class="skill-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <h3 class="skill-title">Database Management</h3>
-                        <p class="skill-description">Designing and optimizing SQL and NoSQL databases.</p>
-                        <div class="skill-level">
-                            <div class="level-bar" style="width: 70%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="carousel-nav">
-                <button class="nav-btn" id="prevBtn"><i class="fas fa-arrow-left"></i></button>
-                <button class="nav-btn" id="nextBtn"><i class="fas fa-arrow-right"></i></button>
-            </div>
-            
-            <div class="carousel-indicators" id="carousel-indicators">
-                <div class="indicator active" data-index="0"></div>
-                <div class="indicator" data-index="1"></div>
-                <div class="indicator" data-index="2"></div>
-                <div class="indicator" data-index="3"></div>
-                <div class="indicator" data-index="4"></div>
-                <div class="indicator" data-index="5"></div>
+    <section id="skills" class="skills-section">
+        <div class="header">
+            <h2>My Developer Skills</h2>
+            <p class="subtitle">Interactive 3D carousel showcasing my technical expertise</p>
+        </div>
+        <div class="carousel-container">
+            <div class="carousel" id="carousel">
+                <!-- Carousel items will be added dynamically -->
             </div>
         </div>
+        <div class="navigation">
+            <button class="nav-btn" id="prevBtn"><i class="fas fa-arrow-left"></i></button>
+            <button class="nav-btn" id="nextBtn"><i class="fas fa-arrow-right"></i></button>
+        </div>
+        <div class="indicators" id="indicators">
+            <!-- Indicators will be added dynamically -->
+        </div>
     </section>
+    
+    <!-- ======= Skills Carousel Styles ======= -->
+    <style>
+    .skills-section {
+        width: 100%;
+        padding: 60px 0 0 0;
+        background: none;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .skills-section .header {
+        text-align: center;
+        margin-bottom: 50px;
+        max-width: 800px;
+    }
+    .skills-section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        background: linear-gradient(45deg, #00c6ff, #0072ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+    .skills-section .subtitle {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        margin-top: 15px;
+    }
+    .carousel-container {
+        width: 100%;
+        max-width: 1200px;
+        height: 500px;
+        perspective: 1500px;
+        position: relative;
+        margin: 0 auto;
+    }
+    .carousel {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 1s cubic-bezier(0.17, 0.67, 0.1, 0.97);
+    }
+    .carousel-item {
+        position: absolute;
+        width: 300px;
+        height: 380px;
+        left: 50%;
+        top: 50%;
+        margin-left: -150px;
+        margin-top: -190px;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 30px;
+        text-align: center;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.5s ease;
+        transform-origin: center center;
+    }
+    .carousel-item:hover {
+        transform: translateZ(50px) !important;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        background: rgba(255, 255, 255, 0.15);
+    }
+    .icon {
+        font-size: 4rem;
+        margin-bottom: 20px;
+        width: 100px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: linear-gradient(45deg, #00c6ff, #0072ff);
+        box-shadow: 0 5px 15px rgba(0, 114, 255, 0.4);
+    }
+    .skill-title {
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+        background: linear-gradient(45deg, #fff, #c2e9fb);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+    .skill-description {
+        font-size: 1rem;
+        opacity: 0.9;
+        line-height: 1.6;
+    }
+    .level {
+        width: 100%;
+        height: 8px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 4px;
+        margin-top: 20px;
+        overflow: hidden;
+    }
+    .level-bar {
+        height: 100%;
+        background: linear-gradient(90deg, #00c6ff, #0072ff);
+        border-radius: 4px;
+    }
+    .navigation {
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+        gap: 20px;
+    }
+    .nav-btn {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+    .nav-btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+    }
+    .indicators {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+    }
+    .indicator {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    .indicator.active {
+        background: #00c6ff;
+        transform: scale(1.2);
+    }
+    @media (max-width: 768px) {
+        .skills-section h2 {
+            font-size: 2rem;
+        }
+        .carousel-container {
+            height: 400px;
+        }
+        .carousel-item {
+            width: 250px;
+            height: 330px;
+            margin-left: -125px;
+            margin-top: -165px;
+        }
+    }
+    </style>
+    
+    <!-- ======= Skills Carousel Script ======= -->
+    <script>
+    // Skills data
+    const skills = [
+        {
+            title: "Frontend Development",
+            icon: "fas fa-code",
+            description: "Building responsive and interactive user interfaces with modern frameworks.",
+            level: 90
+        },
+        {
+            title: "JavaScript",
+            icon: "fab fa-js",
+            description: "Expert in ES6+, DOM manipulation, and modern JavaScript frameworks.",
+            level: 95
+        },
+        {
+            title: "React",
+            icon: "fab fa-react",
+            description: "Creating component-based applications with React ecosystem.",
+            level: 85
+        },
+        {
+            title: "UI/UX Design",
+            icon: "fas fa-paint-brush",
+            description: "Designing intuitive and visually appealing user experiences.",
+            level: 80
+        },
+        {
+            title: "Backend Development",
+            icon: "fas fa-server",
+            description: "Building RESTful APIs and server-side applications.",
+            level: 75
+        },
+        {
+            title: "Database Management",
+            icon: "fas fa-database",
+            description: "Designing and optimizing SQL and NoSQL databases.",
+            level: 70
+        },
+        {
+            title: "DevOps",
+            icon: "fas fa-cloud",
+            description: "Implementing CI/CD pipelines and cloud infrastructure.",
+            level: 65
+        }
+    ];
+
+    const carousel = document.getElementById('carousel');
+    const indicatorsContainer = document.getElementById('indicators');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    let currentIndex = 0;
+    const totalItems = skills.length;
+    const angle = 360 / totalItems;
+
+    // Create carousel items
+    skills.forEach((skill, index) => {
+        const item = document.createElement('div');
+        item.className = 'carousel-item';
+
+        item.innerHTML = `
+            <div class="icon">
+                <i class="${skill.icon}"></i>
+            </div>
+            <h3 class="skill-title">${skill.title}</h3>
+            <p class="skill-description">${skill.description}</p>
+            <div class="level">
+                <div class="level-bar" style="width: ${skill.level}%"></div>
+            </div>
+        `;
+
+        carousel.appendChild(item);
+
+        // Create indicator
+        const indicator = document.createElement('div');
+        indicator.className = 'indicator';
+        if (index === 0) indicator.classList.add('active');
+        indicator.dataset.index = index;
+        indicator.addEventListener('click', () => {
+            currentIndex = index;
+            updateCarousel();
+        });
+        indicatorsContainer.appendChild(indicator);
+    });
+
+    // Position items in 3D space
+    function positionItems() {
+        const items = document.querySelectorAll('.carousel-item');
+        items.forEach((item, i) => {
+            const rotateY = i * angle;
+            const translateZ = 600; // Distance from center
+
+            item.style.transform = `rotateY(${rotateY}deg) translateZ(${translateZ}px)`;
+        });
+    }
+
+    // Update carousel position
+    function updateCarousel() {
+        carousel.style.transform = `rotateY(${currentIndex * -angle}deg)`;
+
+        // Update active indicator
+        document.querySelectorAll('.indicator').forEach((indicator, i) => {
+            if (i === currentIndex) {
+                indicator.classList.add('active');
+            } else {
+                indicator.classList.remove('active');
+            }
+        });
+    }
+
+    // Navigation
+    prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+        updateCarousel();
+    });
+
+    nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % totalItems;
+        updateCarousel();
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            prevBtn.click();
+        } else if (e.key === 'ArrowRight') {
+            nextBtn.click();
+        }
+    });
+
+    // Mouse drag support (simplified)
+    let startX, isDragging = false;
+
+    carousel.addEventListener('mousedown', (e) => {
+        startX = e.clientX;
+        isDragging = true;
+        carousel.style.transition = 'none';
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+
+        const diffX = e.clientX - startX;
+        const sensitivity = 0.5;
+        const rotateDelta = diffX * sensitivity;
+
+        carousel.style.transform = `rotateY(${currentIndex * -angle + rotateDelta}deg)`;
+    });
+
+    document.addEventListener('mouseup', (e) => {
+        if (!isDragging) return;
+
+        isDragging = false;
+        carousel.style.transition = 'transform 1s cubic-bezier(0.17, 0.67, 0.1, 0.97)';
+
+        const diffX = e.clientX - startX;
+        const threshold = 50;
+
+        if (diffX > threshold) {
+            prevBtn.click();
+        } else if (diffX < -threshold) {
+            nextBtn.click();
+        } else {
+            updateCarousel();
+        }
+    });
+
+    // Initialize
+    positionItems();
+    updateCarousel();
+
+    // Auto-rotate for demo purposes
+    let autoRotate = setInterval(() => {
+        nextBtn.click();
+    }, 5000);
+
+    // Pause auto-rotate when user interacts
+    carousel.addEventListener('mouseenter', () => {
+        clearInterval(autoRotate);
+    });
+
+    carousel.addEventListener('mouseleave', () => {
+        autoRotate = setInterval(() => {
+            nextBtn.click();
+        }, 5000);
+    });
+    </script>
     
     <!-- Projects Section -->
     <section id="projects" class="projects">
@@ -1477,81 +1793,6 @@
                 } else {
                     nav.classList.remove('scrolled');
                 }
-            });
-            
-            // 3D Carousel Functionality
-            const carousel = document.getElementById('carousel');
-            const indicators = document.getElementById('carousel-indicators');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            
-            let currentIndex = 0;
-            const totalItems = document.querySelectorAll('.carousel-item').length;
-            const angle = 360 / totalItems;
-            
-            // Position items in 3D space
-            function positionItems() {
-                const items = document.querySelectorAll('.carousel-item');
-                items.forEach((item, i) => {
-                    const rotateY = i * angle;
-                    const translateZ = 600; // Distance from center
-                    
-                    item.style.transform = `rotateY(${rotateY}deg) translateZ(${translateZ}px)`;
-                });
-            }
-            
-            // Update carousel position
-            function updateCarousel() {
-                carousel.style.transform = `rotateY(${currentIndex * -angle}deg)`;
-                
-                // Update active indicator
-                document.querySelectorAll('.indicator').forEach((indicator, i) => {
-                    if (i === currentIndex) {
-                        indicator.classList.add('active');
-                    } else {
-                        indicator.classList.remove('active');
-                    }
-                });
-            }
-            
-            // Navigation
-            prevBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-                updateCarousel();
-            });
-            
-            nextBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex + 1) % totalItems;
-                updateCarousel();
-            });
-            
-            // Keyboard navigation
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowLeft') {
-                    prevBtn.click();
-                } else if (e.key === 'ArrowRight') {
-                    nextBtn.click();
-                }
-            });
-            
-            // Initialize
-            positionItems();
-            updateCarousel();
-            
-            // Auto-rotate for demo purposes
-            let autoRotate = setInterval(() => {
-                nextBtn.click();
-            }, 5000);
-            
-            // Pause auto-rotate when user interacts
-            carousel.addEventListener('mouseenter', () => {
-                clearInterval(autoRotate);
-            });
-            
-            carousel.addEventListener('mouseleave', () => {
-                autoRotate = setInterval(() => {
-                    nextBtn.click();
-                }, 5000);
             });
         });
     </script>
