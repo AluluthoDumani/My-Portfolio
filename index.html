@@ -530,6 +530,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             z-index: 2;
+            opacity: 0; /* Initially hidden for animation */
         }
         
         .timeline-point:hover {
@@ -609,87 +610,6 @@
             color: var(--text-color);
         }
         
-        /* Timeline positions */
-        .timeline-point:nth-child(1) {
-            top: 5%;
-            left: 5%;
-        }
-        
-        .timeline-point:nth-child(1) .point-info {
-            left: 30px;
-            top: -20px;
-        }
-        
-        .timeline-point:nth-child(2) {
-            top: 15%;
-            right: 8%;
-        }
-        
-        .timeline-point:nth-child(2) .point-info {
-            right: 30px;
-            top: -20px;
-        }
-        
-        .timeline-point:nth-child(3) {
-            top: 25%;
-            left: 8%;
-        }
-        
-        .timeline-point:nth-child(3) .point-info {
-            left: 30px;
-            top: -20px;
-        }
-        
-        .timeline-point:nth-child(4) {
-            top: 35%;
-            right: 12%;
-        }
-        
-        .timeline-point:nth-child(4) .point-info {
-            right: 30px;
-            top: -20px;
-        }
-        
-        .timeline-point:nth-child(5) {
-            top: 50%;
-            left: 12%;
-        }
-        
-        .timeline-point:nth-child(5) .point-info {
-            left: 30px;
-            top: -20px;
-        }
-        
-        .timeline-point:nth-child(6) {
-            top: 65%;
-            right: 16%;
-        }
-        
-        .timeline-point:nth-child(6) .point-info {
-            right: 30px;
-            top: -20px;
-        }
-        
-        .timeline-point:nth-child(7) {
-            top: 80%;
-            left: 16%;
-        }
-        
-        .timeline-point:nth-child(7) .point-info {
-            left: 30px;
-            top: -20px;
-        }
-        
-        .timeline-point:nth-child(8) {
-            top: 95%;
-            right: 20%;
-        }
-        
-        .timeline-point:nth-child(8) .point-info {
-            right: 30px;
-            top: -20px;
-        }
-        
         /* Continuous animations */
         .pulse-animation {
             animation: continuousPulse 3s infinite ease-in-out;
@@ -749,56 +669,16 @@
             100% { stroke-dasharray: 20 0; }
         }
         
-        @media (max-width: 768px) {
-            .timeline-container {
-                padding: 2rem 0;
-                height: auto;
-                min-height: 800px;
-            }
-           
-            .point-info {
-                font-size: 0.75rem;
-                min-width: 160px;
-                padding: 6px 10px;
-            }
-           
-            .year {
-                font-size: 0.9rem;
-            }
-           
-            .role {
-                font-size: 0.7rem;
-            }
-
-            .company {
-                font-size: 0.65rem;
-            }
-
-            .timeline-point:nth-child(even) .point-info {
-                right: 25px;
-            }
-
-            .timeline-point:nth-child(odd) .point-info {
-                left: 25px;
-            }
-        }
-        
         /* Skills Section */
-        .skills {
-            padding: 5rem 0;
-            background-color: var(--section-bg-dark);
-        }
-        
-        /* ======= Updated Skills Carousel Styles ======= */
         .skills-section {
             width: 100%;
             padding: 60px 0;
             background: none;
-            color: rgb(117, 112, 112);
             display: flex;
             flex-direction: column;
             align-items: center;
         }
+        
         .skills-section .header {
             text-align: center;
             margin-bottom: 50px;
@@ -814,22 +694,26 @@
             background-clip: text;
             color: transparent;
         }
+        
         .dark-mode .skills-section h2 {
             color: #ff4b2b;
         }
+        
         .skills-section .subtitle {
             font-size: 1.2rem;
             opacity: 0.9;
             margin-top: 15px;
         }
+        
         .carousel-container {
             width: 100%;
             max-width: 1200px;
-            height: 450px; /* Reduced height */
+            height: 450px;
             perspective: 1500px;
             position: relative;
             margin: 0 auto;
         }
+        
         .carousel {
             width: 100%;
             height: 100%;
@@ -837,20 +721,21 @@
             transform-style: preserve-3d;
             transition: transform 1s cubic-bezier(0.17, 0.67, 0.1, 0.97);
         }
+        
         .carousel-item {
             position: absolute;
-            width: 250px; /* Reduced width */
-            height: 320px; /* Reduced height */
+            width: 250px;
+            height: 320px;
             left: 50%;
             top: 50%;
-            margin-left: -125px; /* Adjusted for new width */
-            margin-top: -160px; /* Adjusted for new height */
+            margin-left: -125px;
+            margin-top: -160px;
             border-radius: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px; /* Reduced padding */
+            padding: 20px;
             text-align: center;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
             background: var(--carousel-item-bg);
@@ -858,8 +743,9 @@
             border: 1px solid var(--carousel-item-border);
             transition: all 0.5s ease;
             transform-origin: center center;
-            overflow: hidden; /* For floating icons */
+            overflow: hidden;
         }
+        
         .carousel-item:hover {
             transform: translateZ(50px) !important;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
@@ -883,41 +769,31 @@
             opacity: 0.7;
             color: rgb(111, 147, 158);
             z-index: 1;
-            animation: floatIcon 15s infinite linear;
             filter: drop-shadow(0 0 5px rgba(0,0,0,0.3));
+            animation: floatIcon 15s infinite linear;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
         
         .dark-mode .floating-icon {
-            position: absolute;
-            font-size: 1.5rem;
-            opacity: 0.7;
             color: rgb(249, 3, 3);
-            z-index: 1;
-            animation: floatIcon 15s infinite linear;
-            filter: drop-shadow(0 0 5px rgba(0,0,0,0.3));
+        }
+        
+        .floating-icon:hover {
+            opacity: 1;
+            transform: scale(1.5) !important;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+            animation-play-state: paused;
         }
         
         /* Floating animation */
         @keyframes floatIcon {
             0% {
-                transform: translate(0, 0) rotate(0deg);
-                opacity: 0.7;
-            }
-            25% {
-                transform: translate(20px, -20px) rotate(90deg);
-                opacity: 0.8;
-            }
-            50% {
-                transform: translate(40px, 0px) rotate(180deg);
-                opacity: 0.6;
-            }
-            75% {
-                transform: translate(20px, 20px) rotate(270deg);
-                opacity: 0.9;
+                transform: rotate(0deg) translateX(60px) rotate(0deg);
             }
             100% {
-                transform: translate(0, 0) rotate(360deg);
-                opacity: 0.7;
+                transform: rotate(360deg) translateX(60px) rotate(-360deg);
             }
         }
         
@@ -931,9 +807,9 @@
         }
         
         .icon {
-            font-size: 3.5rem; /* Slightly reduced */
-            width: 80px; /* Reduced size */
-            height: 80px; /* Reduced size */
+            font-size: 3.5rem;
+            width: 80px;
+            height: 80px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -943,101 +819,90 @@
             position: relative;
             z-index: 2;
         }
+        
         .skill-title {
-            font-size: 1.5rem; /* Reduced font size */
+            font-size: 1.5rem;
             font-weight: 600;
-            margin-bottom: 10px; /* Reduced margin */
+            margin-bottom: 10px;
             background: linear-gradient(45deg, #fff, #c2e9fb);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
+        
         .skill-description {
-            font-size: 0.9rem; /* Reduced font size */
+            font-size: 0.9rem;
             opacity: 0.9;
             line-height: 1.5;
-            margin-bottom: 10px; /* Added spacing */
+            margin-bottom: 10px;
         }
+        
         .level {
             width: 100%;
-            height: 6px; /* Reduced height */
+            height: 6px;
             background: rgba(255, 255, 255, 0.2);
             border-radius: 4px;
-            margin-top: 15px; /* Reduced margin */
+            margin-top: 15px;
             overflow: hidden;
         }
+        
         .level-bar {
             height: 100%;
             background: linear-gradient(90deg, #00c6ff, #0072ff);
             border-radius: 4px;
+            transition: width 1s ease;
         }
-       .dark-mode .level-bar {
-            height: 100%;
+        
+        .dark-mode .level-bar {
             background: linear-gradient(90deg, #ff4b2b, #ff00bb);
-            border-radius: 4px;
         }
+        
         .navigation {
             display: flex;
             justify-content: center;
-            margin-top: 30px; /* Reduced margin */
-            gap: 15px; /* Reduced gap */
+            margin-top: 30px;
+            gap: 15px;
         }
+        
         .nav-btn {
-            width: 50px; /* Reduced size */
-            height: 50px; /* Reduced size */
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.1);
             border: 2px solid rgba(255, 255, 255, 0.3);
             color: white;
-            font-size: 1.3rem; /* Reduced size */
+            font-size: 1.3rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
         }
+        
         .nav-btn:hover {
             background: rgba(255, 255, 255, 0.2);
             transform: scale(1.1);
         }
+        
         .indicators {
             display: flex;
-            gap: 8px; /* Reduced gap */
-            margin-top: 15px; /* Reduced margin */
+            gap: 8px;
+            margin-top: 15px;
+            justify-content: center;
         }
+        
         .indicator {
-            width: 10px; /* Reduced size */
-            height: 10px; /* Reduced size */
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.3);
             cursor: pointer;
             transition: all 0.3s ease;
         }
+        
         .indicator.active {
             background: #00c6ff;
             transform: scale(1.2);
-        }
-        @media (max-width: 768px) {
-            .skills-section h2 {
-                font-size: 2rem;
-            }
-            .carousel-container {
-                height: 380px; /* Adjusted height */
-            }
-            .carousel-item {
-                width: 220px; /* Reduced for mobile */
-                height: 290px; /* Reduced for mobile */
-                margin-left: -110px; /* Adjusted for new width */
-                margin-top: -145px; /* Adjusted for new height */
-            }
-            .icon {
-                font-size: 3rem;
-                width: 70px;
-                height: 70px;
-            }
-            .skill-title {
-                font-size: 1.3rem;
-            }
         }
         
         /* Projects Section */
@@ -1155,10 +1020,9 @@
             background: linear-gradient(135deg, #001510, #1a2a6c);
             color: white;
         }
+        
         .dark-mode .contact {
-            padding: 5rem 0;
             background: #000000;
-            color: white;
         }
         
         .contact-content {
@@ -1188,9 +1052,8 @@
             font-size: 1.3rem;
             color: #00c6ff;
         }
+        
         .dark-mode .contact-info i {
-            margin-right: 1rem;
-            font-size: 1.3rem;
             color: #ff4b2b;
         }
         
@@ -1240,14 +1103,6 @@
         
         .dark-mode .submit-btn {
             background: linear-gradient(45deg, #ff4b2b, #ff0000);
-            color: white;
-            border: none;
-            padding: 0.9rem 2.2rem;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1rem;
         }
         
         .submit-btn:hover {
@@ -1362,6 +1217,197 @@
             .hero-subtitle {
                 font-size: 1.4rem;
             }
+            
+            .console-code {
+                padding: 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .timeline-container {
+                height: auto;
+                min-height: 800px;
+            }
+            
+            .point-info {
+                font-size: 0.75rem;
+                min-width: 140px;
+                padding: 6px 8px;
+            }
+            
+            .year {
+                font-size: 0.9rem;
+            }
+            
+            .role {
+                font-size: 0.8rem;
+            }
+            
+            .company {
+                font-size: 0.7rem;
+            }
+            
+            .timeline-point:nth-child(1) {
+                top: 5% !important;
+                left: 5% !important;
+            }
+            
+            .timeline-point:nth-child(2) {
+                top: 15% !important;
+                right: 8% !important;
+            }
+            
+            .timeline-point:nth-child(3) {
+                top: 25% !important;
+                left: 8% !important;
+            }
+            
+            .timeline-point:nth-child(4) {
+                top: 35% !important;
+                right: 12% !important;
+            }
+            
+            .timeline-point:nth-child(5) {
+                top: 50% !important;
+                left: 12% !important;
+            }
+            
+            .timeline-point:nth-child(6) {
+                top: 65% !important;
+                right: 16% !important;
+            }
+            
+            .timeline-point:nth-child(7) {
+                top: 80% !important;
+                left: 16% !important;
+            }
+            
+            .timeline-point:nth-child(8) {
+                top: 95% !important;
+                right: 20% !important;
+            }
+            
+            .carousel-container {
+                height: 380px;
+            }
+            
+            .carousel-item {
+                width: 220px;
+                height: 290px;
+                margin-left: -110px;
+                margin-top: -145px;
+            }
+            
+            .icon {
+                font-size: 3rem;
+                width: 70px;
+                height: 70px;
+            }
+            
+            .skill-title {
+                font-size: 1.3rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-content {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .cta-button {
+                display: block;
+                margin: 0.5rem auto;
+                width: 80%;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .timeline-point {
+                transform: scale(0.8);
+            }
+            
+            .carousel-container {
+               
+            }
+            
+            .carousel-item {
+                width: 200px;
+                height: 270px;
+                margin-left: -100px;
+                margin-top: -135px;
+            }
+            
+            .icon {
+                font-size: 2.5rem;
+                width: 60px;
+                height: 60px;
+            }
+            
+            .skill-title {
+                font-size: 1.2rem;
+            }
+            
+            .skill-description {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Added positioning for timeline points */
+        .timeline-point:nth-child(1) {
+            top: 5%;
+            left: 10%;
+        }
+        
+        .timeline-point:nth-child(2) {
+            top: 15%;
+            right: 15%;
+        }
+        
+        .timeline-point:nth-child(3) {
+            top: 25%;
+            left: 20%;
+        }
+        
+        .timeline-point:nth-child(4) {
+            top: 35%;
+            right: 25%;
+        }
+        
+        .timeline-point:nth-child(5) {
+            top: 50%;
+            left: 30%;
+        }
+        
+        .timeline-point:nth-child(6) {
+            top: 65%;
+            right: 35%;
+        }
+        
+        .timeline-point:nth-child(7) {
+            top: 80%;
+            left: 40%;
+        }
+        
+        .timeline-point:nth-child(8) {
+            top: 95%;
+            right: 45%;
         }
     </style>
 </head>
@@ -1528,7 +1574,7 @@
         </div>
         <div class="carousel-container">
             <div class="carousel" id="carousel">
-                
+                <!-- Carousel items will be generated by JavaScript -->
             </div>
         </div>
         <div class="navigation">
@@ -1536,7 +1582,7 @@
             <button class="nav-btn" id="nextBtn"><i class="fas fa-arrow-right"></i></button>
         </div>
         <div class="indicators" id="indicators">
-            
+            <!-- Indicators will be generated by JavaScript -->
         </div>
     </section>
     
@@ -1566,29 +1612,48 @@
                 
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=815&q=80" alt="Task Management App">
+                        <img src="./images/Black White Minimalist Initials Monogram Jewelry Logo.png" alt="Task Management App">
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">Task Management App</h3>
+                        <h3 class="project-title">Personal Portfolio</h3>
                         <div class="project-tags">
-                            <span class="project-tag">Vue.js</span>
-                            <span class="project-tag">Express</span>
-                            <span class="project-tag">PostgreSQL</span>
+                            <span class="project-tag">WordPress</span>
+                            <span class="project-tag">Elemantor</span>
+                            <span class="project-tag">PHP</span>
+                        </div>
+                        <p>A modern, responsive personal portfolio website built to showcase my skills, projects, and experience. Designed for easy updates and a professional online presence.</p>
+                        <div class="project-links">
+                            <a href="https://aluluthomihlalidumani.fwh.is/" class="project-link"><i class="fas fa-external-link-alt"></i> View Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="./images/Screenshot 2025-07-07 101737.png" alt="Viso Home Page">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Visio Elemental Challenge</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML</span>
+                            <span class="project-tag">CSS</span>
+                            <span class="project-tag">JQuery</span>
                         </div>
                         <p>A collaborative task management application with real-time updates, user roles, and project tracking.</p>
                         <div class="project-links">
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> View Demo</a>
-                            <a href="#" class="project-link"><i class="fab fa-github"></i> Source Code</a>
+                            <a href="https://elemental-challenge-717ih7di7-aluluthodumanis-projects.vercel.app/" class="project-link"><i class="fas fa-external-link-alt"></i> View Demo</a>
+                            <a href="https://github.com/AluluthoDumani/newElemental.git" class="project-link"><i class="fab fa-github"></i> Source Code</a>
+                            
                         </div>
                     </div>
                 </div>
                 
                 <div class="project-card">
                     <div class="project-img">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Social Media Dashboard">
+                        <img src="./images/Untitled design.png" alt="Social Media Dashboard">
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">Social Media Dashboard</h3>
+                        <h3 class="project-title">Social Media Expert Dashboard</h3>
                         <div class="project-tags">
                             <span class="project-tag">React</span>
                             <span class="project-tag">Firebase</span>
@@ -1596,8 +1661,8 @@
                         </div>
                         <p>A comprehensive dashboard for analyzing social media performance across multiple platforms.</p>
                         <div class="project-links">
-                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i> View Demo</a>
-                            <a href="#" class="project-link"><i class="fab fa-github"></i> Source Code</a>
+                            <a href="https://social-media-expert-alu.vercel.app/" class="project-link"><i class="fas fa-external-link-alt"></i> View Demo</a>
+                            <a href="https://github.com/AluluthoDumani/Social-Media-Dashboard.git" class="project-link"><i class="fab fa-github"></i> Source Code</a>
                         </div>
                     </div>
                 </div>
@@ -1756,224 +1821,185 @@
             }, 4000);
         });
 
-        // ======= Updated Skills Carousel Script =======
-        // Skills data with associated icons
-        const skills = [
-            {
-                title: "Frontend Development",
-                icon: "fas fa-code",
-                description: "Building responsive and interactive user interfaces with modern frameworks.",
-                level: 90,
-                floatingIcons: ["fab fa-html5", "fab fa-css3-alt", "fab fa-js", "fab fa-react", "fab fa-vuejs"]
-            },
-            {
-                title: "JavaScript",
-                icon: "fab fa-js",
-                description: "Expert in ES6+, DOM manipulation, and modern JavaScript frameworks.",
-                level: 95,
-                floatingIcons: ["fab fa-node-js", "fab fa-angular", "fab fa-react", "fab fa-vuejs", "fab fa-npm"]
-            },
-            {
-                title: "React",
-                icon: "fab fa-react",
-                description: "Creating component-based applications with React ecosystem.",
-                level: 85,
-                floatingIcons: ["fab fa-js", "fab fa-npm", "fab fa-git-alt", "fab fa-sass", "fab fa-figma"]
-            },
-            {
-                title: "UI/UX Design",
-                icon: "fas fa-paint-brush",
-                description: "Designing intuitive and visually appealing user experiences.",
-                level: 80,
-                floatingIcons: ["fab fa-figma", "fab fa-adobe", "fas fa-palette", "fas fa-drafting-compass", "fas fa-magic"]
-            },
-            {
-                title: "Backend Development",
-                icon: "fas fa-server",
-                description: "Building RESTful APIs and server-side applications.",
-                level: 75,
-                floatingIcons: ["fab fa-node-js", "fab fa-python", "fas fa-database", "fab fa-php", "fas fa-code"]
-            },
-            {
-                title: "Database Management",
-                icon: "fas fa-database",
-                description: "Designing and optimizing SQL and NoSQL databases.",
-                level: 70,
-                floatingIcons: ["fas fa-table", "fas fa-server", "fas fa-code", "fas fa-cloud", "fas fa-sync-alt"]
-            },
-            {
-                title: "DevOps",
-                icon: "fas fa-cloud",
-                description: "Implementing CI/CD pipelines and cloud infrastructure.",
-                level: 65,
-                floatingIcons: ["fab fa-docker", "fab fa-aws", "fab fa-git-alt", "fas fa-terminal", "fas fa-cogs"]
-            }
-        ];
+        // Skills Carousel Implementation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Skills data
+            const skills = [
+                {
+                    title: "Frontend Development",
+                    icon: "fas fa-code",
+                    description: "Building responsive and interactive user interfaces with modern frameworks.",
+                    level: 90,
+                    floatingIcons: ["fab fa-html5", "fab fa-css3-alt", "fab fa-js", "fab fa-react", "fab fa-vuejs"]
+                },
+                {
+                    title: "JavaScript",
+                    icon: "fab fa-js",
+                    description: "Expert in ES6+, DOM manipulation, and modern JavaScript frameworks.",
+                    level: 95,
+                    floatingIcons: ["fab fa-node-js", "fab fa-angular", "fab fa-react", "fab fa-vuejs", "fab fa-npm"]
+                },
+                {
+                    title: "React",
+                    icon: "fab fa-react",
+                    description: "Creating component-based applications with React ecosystem.",
+                    level: 85,
+                    floatingIcons: ["fab fa-js", "fab fa-npm", "fab fa-git-alt", "fab fa-sass", "fab fa-figma"]
+                },
+                {
+                    title: "UI/UX Design",
+                    icon: "fas fa-paint-brush",
+                    description: "Designing intuitive and visually appealing user experiences.",
+                    level: 80,
+                    floatingIcons: ["fab fa-figma", "fab fa-adobe", "fas fa-palette", "fas fa-drafting-compass", "fas fa-magic"]
+                },
+                {
+                    title: "Backend Development",
+                    icon: "fas fa-server",
+                    description: "Building RESTful APIs and server-side applications.",
+                    level: 75,
+                    floatingIcons: ["fab fa-node-js", "fab fa-python", "fas fa-database", "fab fa-php", "fas fa-code"]
+                },
+                {
+                    title: "Database Management",
+                    icon: "fas fa-database",
+                    description: "Designing and optimizing SQL and NoSQL databases.",
+                    level: 70,
+                    floatingIcons: ["fas fa-table", "fas fa-server", "fas fa-code", "fas fa-cloud", "fas fa-sync-alt"]
+                },
+                {
+                    title: "DevOps",
+                    icon: "fas fa-cloud",
+                    description: "Implementing CI/CD pipelines and cloud infrastructure.",
+                    level: 65,
+                    floatingIcons: ["fab fa-docker", "fab fa-aws", "fab fa-git-alt", "fas fa-terminal", "fas fa-cogs"]
+                }
+            ];
 
-        const carousel = document.getElementById('carousel');
-        const indicatorsContainer = document.getElementById('indicators');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
+            const carousel = document.getElementById('carousel');
+            const indicatorsContainer = document.getElementById('indicators');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
 
-        let currentIndex = 0;
-        const totalItems = skills.length;
-        const angle = 360 / totalItems;
+            let currentIndex = 0;
+            const totalItems = skills.length;
+            const angle = 360 / totalItems;
 
-        // Create carousel items
-        skills.forEach((skill, index) => {
-            const item = document.createElement('div');
-            item.className = 'carousel-item';
+            // Create carousel items
+            skills.forEach((skill, index) => {
+                const item = document.createElement('div');
+                item.className = 'carousel-item';
 
-            // Generate floating icons
-            let floatingIconsHtml = '';
-            if (skill.floatingIcons && skill.floatingIcons.length > 0) {
-                floatingIconsHtml = '<div class="floating-icons">';
-                skill.floatingIcons.forEach((iconClass, i) => {
-                    // Random position for each icon
-                    const top = Math.random() * 80 + 10;
-                    const left = Math.random() * 80 + 10;
-                    const animationDuration = 15 + Math.random() * 10;
-                    const animationDelay = Math.random() * 5;
-                    
-                    floatingIconsHtml += `
-                        <i class="${iconClass} floating-icon" 
-                           style="top:${top}%; left:${left}%;
-                           animation-duration:${animationDuration}s;
-                           animation-delay:${animationDelay}s;">
-                        </i>
-                    `;
-                });
-                floatingIconsHtml += '</div>';
-            }
+                // Generate floating icons
+                let floatingIconsHtml = '';
+                if (skill.floatingIcons && skill.floatingIcons.length > 0) {
+                    floatingIconsHtml = '<div class="floating-icons">';
+                    skill.floatingIcons.forEach((iconClass, i) => {
+                        const animationDuration = 15 + Math.random() * 10;
+                        const animationDelay = Math.random() * 5;
+                        
+                        floatingIconsHtml += `
+                            <i class="${iconClass} floating-icon" 
+                               style="animation-duration:${animationDuration}s;
+                                      animation-delay:${animationDelay}s;">
+                            </i>
+                        `;
+                    });
+                    floatingIconsHtml += '</div>';
+                }
 
-            item.innerHTML = `
-                ${floatingIconsHtml}
-                <div class="icon-container">
-                    <div class="icon">
-                        <i class="${skill.icon}"></i>
+                item.innerHTML = `
+                    ${floatingIconsHtml}
+                    <div class="icon-container">
+                        <div class="icon">
+                            <i class="${skill.icon}"></i>
+                        </div>
                     </div>
-                </div>
-                <h3 class="skill-title">${skill.title}</h3>
-                <p class="skill-description">${skill.description}</p>
-                <div class="level">
-                    <div class="level-bar" style="width: ${skill.level}%"></div>
-                </div>
-            `;
+                    <h3 class="skill-title">${skill.title}</h3>
+                    <p class="skill-description">${skill.description}</p>
+                    <div class="level">
+                        <div class="level-bar" style="width: ${skill.level}%"></div>
+                    </div>
+                `;
 
-            carousel.appendChild(item);
+                carousel.appendChild(item);
 
-            // Create indicator
-            const indicator = document.createElement('div');
-            indicator.className = 'indicator';
-            if (index === 0) indicator.classList.add('active');
-            indicator.dataset.index = index;
-            indicator.addEventListener('click', () => {
-                currentIndex = index;
+                // Create indicator
+                const indicator = document.createElement('div');
+                indicator.className = 'indicator';
+                if (index === 0) indicator.classList.add('active');
+                indicator.dataset.index = index;
+                indicator.addEventListener('click', () => {
+                    currentIndex = parseInt(indicator.dataset.index);
+                    updateCarousel();
+                });
+                indicatorsContainer.appendChild(indicator);
+            });
+
+            // Position items in 3D space
+            function positionItems() {
+                const items = document.querySelectorAll('.carousel-item');
+                items.forEach((item, i) => {
+                    const rotateY = i * angle;
+                    const translateZ = 500;
+
+                    item.style.transform = `rotateY(${rotateY}deg) translateZ(${translateZ}px)`;
+                });
+            }
+
+            // Update carousel position
+            function updateCarousel() {
+                carousel.style.transform = `rotateY(${currentIndex * -angle}deg)`;
+
+                // Update active indicator
+                document.querySelectorAll('.indicator').forEach((indicator, i) => {
+                    if (i === currentIndex) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
+                    }
+                });
+            }
+
+            // Navigation
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + totalItems) % totalItems;
                 updateCarousel();
             });
-            indicatorsContainer.appendChild(indicator);
-        });
 
-        // Position items in 3D space
-        function positionItems() {
-            const items = document.querySelectorAll('.carousel-item');
-            items.forEach((item, i) => {
-                const rotateY = i * angle;
-                const translateZ = 500; // Slightly reduced distance
-
-                item.style.transform = `rotateY(${rotateY}deg) translateZ(${translateZ}px)`;
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % totalItems;
+                updateCarousel();
             });
-        }
 
-        // Update carousel position
-        function updateCarousel() {
-            carousel.style.transform = `rotateY(${currentIndex * -angle}deg)`;
-
-            // Update active indicator
-            document.querySelectorAll('.indicator').forEach((indicator, i) => {
-                if (i === currentIndex) {
-                    indicator.classList.add('active');
-                } else {
-                    indicator.classList.remove('active');
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    prevBtn.click();
+                } else if (e.key === 'ArrowRight') {
+                    nextBtn.click();
                 }
             });
-        }
 
-        // Navigation
-        prevBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+            // Initialize
+            positionItems();
             updateCarousel();
-        });
 
-        nextBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % totalItems;
-            updateCarousel();
-        });
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') {
-                prevBtn.click();
-            } else if (e.key === 'ArrowRight') {
-                nextBtn.click();
-            }
-        });
-
-        // Mouse drag support (simplified)
-        let startX, isDragging = false;
-
-        carousel.addEventListener('mousedown', (e) => {
-            startX = e.clientX;
-            isDragging = true;
-            carousel.style.transition = 'none';
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-
-            const diffX = e.clientX - startX;
-            const sensitivity = 0.5;
-            const rotateDelta = diffX * sensitivity;
-
-            carousel.style.transform = `rotateY(${currentIndex * -angle + rotateDelta}deg)`;
-        });
-
-        document.addEventListener('mouseup', (e) => {
-            if (!isDragging) return;
-
-            isDragging = false;
-            carousel.style.transition = 'transform 1s cubic-bezier(0.17, 0.67, 0.1, 0.97)';
-
-            const diffX = e.clientX - startX;
-            const threshold = 50;
-
-            if (diffX > threshold) {
-                prevBtn.click();
-            } else if (diffX < -threshold) {
-                nextBtn.click();
-            } else {
-                updateCarousel();
-            }
-        });
-
-        // Initialize
-        positionItems();
-        updateCarousel();
-
-        // Auto-rotate for demo purposes
-        let autoRotate = setInterval(() => {
-            nextBtn.click();
-        }, 5000);
-
-        // Pause auto-rotate when user interacts
-        carousel.addEventListener('mouseenter', () => {
-            clearInterval(autoRotate);
-        });
-
-        carousel.addEventListener('mouseleave', () => {
-            autoRotate = setInterval(() => {
+            // Auto-rotate for demo purposes
+            let autoRotate = setInterval(() => {
                 nextBtn.click();
             }, 5000);
+
+            // Pause auto-rotate when user interacts
+            carousel.addEventListener('mouseenter', () => {
+                clearInterval(autoRotate);
+            });
+
+            carousel.addEventListener('mouseleave', () => {
+                autoRotate = setInterval(() => {
+                    nextBtn.click();
+                }, 5000);
+            });
         });
     </script>
 </body>
