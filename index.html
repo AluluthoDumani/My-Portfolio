@@ -118,6 +118,55 @@
             color: var(--text-color);
             transition: transform 0.3s ease;
         }
+         /* Navbar logo container */
+    .navbar-logo-container {
+        width: 40px;
+        height: 40px;
+        position: relative;
+    }
+
+    .navbar-logo-container .circle {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: 100%;
+    }
+
+     .navbar-logo-container .circle svg {
+        width: 100%;
+        height: 100%;
+    }
+
+    .navbar-logo-container .circle text {
+        font-size: 5px;
+        font-weight: 700;
+        fill: url(#textGradient);
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+    }
+
+     .navbar-logo-container .center-dot {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 3px;
+        height: 3px;
+        background: var(--center-color);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 0 4px var(--glow-color);
+        animation: pulse 2s infinite alternate;
+    }
+
+    
+    /* Adjust existing logo class */
+    .logo {
+        display: flex;
+        align-items: center;
+        transition: transform 0.3s ease;
+    }
         
         .logo:hover {
             transform: scale(1.05);
@@ -1415,7 +1464,27 @@
     <!-- Navigation -->
     <nav id="nav">
         <div class="container nav-container">
-            <a href="#" class="logo">ALULUTHO</a>
+           <a href="#" class="logo">
+    <div class="navbar-logo-container">
+        <div class="circle">
+            <svg viewBox="0 0 120 120">
+                <defs>
+                    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="var(--gradient-start)" />
+                        <stop offset="100%" stop-color="var(--gradient-end)" />
+                    </linearGradient>
+                </defs>
+                <path id="circlePath" d="M60,60 m-50,0 a50,50 0 1,1 100,0 a50,50 0 1,1 -100,0" fill="none"/>
+                <text>
+                    <textPath href="#circlePath" startOffset="50%">
+                        ALULUTHO MIHLALI DUMANI
+                    </textPath>
+                </text>
+            </svg>
+        </div>
+        <div class="center-dot"></div>
+    </div>
+</a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
