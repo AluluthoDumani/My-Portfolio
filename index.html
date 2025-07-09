@@ -140,12 +140,12 @@
     }
 
     .navbar-logo-container .circle text {
-        font-size: 5px;
-        font-weight: 700;
-        fill: url(#textGradient);
-        letter-spacing: 0.5px;
-        text-transform: uppercase;
-    }
+    font-size: 6px; /* Increased font size */
+    font-weight: 700;
+    fill: var(--accent-color); /* Use accent color instead of gradient */
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
 
      .navbar-logo-container .center-dot {
         position: absolute;
@@ -156,8 +156,8 @@
         background: var(--center-color);
         border-radius: 50%;
         transform: translate(-50%, -50%);
-        box-shadow: 0 0 4px var(--glow-color);
-        animation: pulse 2s infinite alternate;
+       box-shadow: 0 0 8px var(--accent-color);
+        animation: pulse 1.5s infinite alternate;
     }
 
     
@@ -310,7 +310,7 @@
         
         .hero-content {
             padding: 2rem 0;
-            text-align: center;
+            text-align: left;
         }
         
         .hero-title {
@@ -337,9 +337,10 @@
             padding: 1.5rem;
             border-radius: 8px;
             font-family: 'Courier New', monospace;
-            margin: 0 auto 2rem;
+            margin: 0 0 2rem;
             max-width: 800px;
             position: relative;
+            text-align: left;
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -383,6 +384,7 @@
             display: block;
             margin-bottom: 0.5rem;
             color: #00ff00;
+            padding-left: 20px; 
             position: relative;
         }
         
@@ -390,6 +392,8 @@
             content: '> ';
             color: #fff;
             margin-right: 0.5rem;
+            position: absolute;
+            left: 0;
         }
         
         .typewriter {
@@ -539,6 +543,7 @@
             padding: 4rem 0;
             height: 90vh;
             min-height: 700px;
+            height: auto;
         }
         
         .zigzag-line {
@@ -574,27 +579,53 @@
             opacity: 0.4;
         }
         
-        .timeline-point {
-            position: absolute;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 2;
-            opacity: 0; /* Initially hidden for animation */
-        }
+      .timeline-point {
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 2rem;
+    opacity: 0; /* Initially hidden for animation */
+    display: flex;
+    align-items: center;
+}
+        
+        .timeline-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    position: relative;
+    z-index: 2;
+}
         
         .timeline-point:hover {
             transform: scale(1.05);
         }
+
+        .timeline-point .point-info {
+    white-space: normal; /* Allow text wrapping */
+    min-width: 200px; /* Increase minimum width */
+    padding: 10px 15px; /* More padding */
+    font-size: 1rem; /* Larger text */
+    transform: translateX(-50%); /* Center horizontally */
+    left: 50%;
+}
+
         
-        .point-dot {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: radial-gradient(circle, var(--timeline-dot), #fff);
-            border: 3px solid var(--timeline-line);
-            position: relative;
-            transition: all 0.3s ease;
-        }
+       .point-dot {
+    min-width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--timeline-dot), var(--card-bg));
+    border: 3px solid var(--timeline-line);
+    margin-right: 15px;
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+}
         
         .dark-mode .point-dot {
             background: radial-gradient(circle, var(--timeline-dot), #121212);
@@ -611,21 +642,22 @@
         }
         
         .point-info {
-            position: absolute;
-            white-space: nowrap;
-            color: var(--text-color);
-            font-weight: bold;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 8px 12px;
-            border-radius: 8px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            min-width: 180px;
-        }
+    position: static;
+    transform: none !important;
+    white-space: normal;
+    color: var(--text-color);
+    font-weight: normal;
+    text-shadow: none;
+    font-size: 1rem;
+    background: transparent;
+    backdrop-filter: none;
+    padding: 0;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    min-width: auto;
+    flex: 1;
+}
         
         .dark-mode .point-info {
             color: var(--text-color);
@@ -1276,6 +1308,12 @@
                 flex-direction: column;
             }
             
+            .timeline-point {
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+            
             .timeline-container {
                 height: auto;
                 min-height: 800px;
@@ -1299,45 +1337,14 @@
                 font-size: 0.7rem;
             }
             
-            .timeline-point:nth-child(1) {
-                top: 5% !important;
-                left: 5% !important;
-            }
-            
-            .timeline-point:nth-child(2) {
-                top: 15% !important;
-                right: 8% !important;
-            }
-            
-            .timeline-point:nth-child(3) {
-                top: 25% !important;
-                left: 8% !important;
-            }
-            
-            .timeline-point:nth-child(4) {
-                top: 35% !important;
-                right: 12% !important;
-            }
-            
-            .timeline-point:nth-child(5) {
-                top: 50% !important;
-                left: 12% !important;
-            }
-            
-            .timeline-point:nth-child(6) {
-                top: 65% !important;
-                right: 16% !important;
-            }
-            
-            .timeline-point:nth-child(7) {
-                top: 80% !important;
-                left: 16% !important;
-            }
-            
-            .timeline-point:nth-child(8) {
-                top: 95% !important;
-                right: 20% !important;
-            }
+            .timeline-point:nth-child(1) { top: 5%; left: 15%; }
+.timeline-point:nth-child(2) { top: 15%; right: 15%; }
+.timeline-point:nth-child(3) { top: 25%; left: 20%; }
+.timeline-point:nth-child(4) { top: 35%; right: 20%; }
+.timeline-point:nth-child(5) { top: 50%; left: 25%; }
+.timeline-point:nth-child(6) { top: 65%; right: 25%; }
+.timeline-point:nth-child(7) { top: 80%; left: 30%; }
+.timeline-point:nth-child(8) { top: 95%; right: 30%; }
             
             .carousel-container {
                 height: 380px;
@@ -1358,11 +1365,20 @@
             
             .skill-title {
                 font-size: 1.3rem;
+                 color: var(--text-color); /* Use text color variable */
+    background: none !important; /* Remove gradient background */
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
             }
             
             .projects-grid {
                 grid-template-columns: 1fr;
             }
+.timeline-grid {
+        grid-template-columns: 1fr;
+    }
+
+
             
             .contact-content {
                 flex-direction: column;
@@ -1415,13 +1431,14 @@
             
             .skill-description {
                 font-size: 0.8rem;
+                color: var(--text-color);
             }
         }
 
         /* Added positioning for timeline points */
         .timeline-point:nth-child(1) {
-            top: 5%;
-            left: 10%;
+            top: 15%;
+            left: 30%;
         }
         
         .timeline-point:nth-child(2) {
@@ -1600,7 +1617,7 @@
                 <div class="timeline-point float-animation" style="animation-delay: 2s;">
                     <div class="point-dot pulse-animation" style="animation-delay: 2s;"></div>
                     <div class="point-info">
-                        <div class="year">2023-2024</div>
+                        <div class="year">2020-2024</div>
                         <div class="role">Sales Representative</div>
                         <div class="company">WTD</div>
                     </div>
@@ -1615,13 +1632,13 @@
                     </div>
                 </div>
                
-                <div class="timeline-point float-animation" style="animation-delay: 3s;">
+                <!-- <div class="timeline-point float-animation" style="animation-delay: 3s;">
                     <div class="point-dot pulse-animation education-marker" style="animation-delay: 3s;"></div>
                     <div class="point-info">
                         <div class="year">2025</div>
                         <div class="role">Coding Course</div>
                         <div class="company">Life Choices Academy</div>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="timeline-point float-animation" style="animation-delay: 3.5s;">
@@ -1906,14 +1923,14 @@
                     icon: "fab fa-js",
                     description: "Expert in ES6+, DOM manipulation, and modern JavaScript frameworks.",
                     level: 95,
-                    floatingIcons: ["fab fa-node-js", "fab fa-angular", "fab fa-react", "fab fa-vuejs", "fab fa-npm"]
+                    floatingIcons: ["fab fa-node-js",  "fab fa-react", "fab fa-vuejs", "fab fa-npm"]
                 },
                 {
                     title: "React",
                     icon: "fab fa-react",
                     description: "Creating component-based applications with React ecosystem.",
                     level: 85,
-                    floatingIcons: ["fab fa-js", "fab fa-npm", "fab fa-git-alt", "fab fa-sass", "fab fa-figma"]
+                    floatingIcons: ["fab fa-js", "fab fa-npm", "fab fa-git-alt",  "fab fa-figma"]
                 },
                 {
                     title: "UI/UX Design",
@@ -2030,6 +2047,8 @@
                 });
             }
 
+
+
             // Navigation
             prevBtn.addEventListener('click', () => {
                 currentIndex = (currentIndex - 1 + totalItems) % totalItems;
@@ -2063,6 +2082,13 @@
             carousel.addEventListener('mouseenter', () => {
                 clearInterval(autoRotate);
             });
+
+            // Initialize timeline points as visible
+            $(document).ready(function() {
+            $('.timeline-point').css('opacity', '1');
+       });
+
+
 
             carousel.addEventListener('mouseleave', () => {
                 autoRotate = setInterval(() => {
