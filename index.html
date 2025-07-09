@@ -323,6 +323,16 @@
             background-clip: text;
             color: transparent;
         }
+        .dark-mode .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #ec1e03, #dd5d01);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
         
         .hero-subtitle {
             font-size: 1.8rem;
@@ -543,7 +553,7 @@
             padding: 4rem 0;
             height: 90vh;
             min-height: 700px;
-            height: auto;
+            height: aut;
         }
         
         .zigzag-line {
@@ -579,27 +589,14 @@
             opacity: 0.4;
         }
         
-      .timeline-point {
-    position: relative;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    padding: 1.5rem;
-    background: var(--card-bg);
-    border-radius: 10px;
-    box-shadow: var(--card-shadow);
-    margin-bottom: 2rem;
-    opacity: 0; /* Initially hidden for animation */
-    display: flex;
-    align-items: center;
-}
-        
-        .timeline-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    position: relative;
-    z-index: 2;
-}
+        .timeline-point {
+            position: relative;
+            padding-left: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 2;
+            opacity: 0; /* Initially hidden for animation */
+        }
         
         .timeline-point:hover {
             transform: scale(1.05);
@@ -615,17 +612,19 @@
 }
 
         
-       .point-dot {
-    min-width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: radial-gradient(circle, var(--timeline-dot), var(--card-bg));
-    border: 3px solid var(--timeline-line);
-    margin-right: 15px;
-    position: relative;
-    z-index: 2;
-    flex-shrink: 0;
-}
+        .point-dot {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--timeline-dot), #fff);
+            border: 3px solid var(--timeline-line);
+            position: absolute;
+            transition: all 0.3s ease;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+            margin-right: 0;
+        }
         
         .dark-mode .point-dot {
             background: radial-gradient(circle, var(--timeline-dot), #121212);
@@ -642,22 +641,21 @@
         }
         
         .point-info {
-    position: static;
-    transform: none !important;
-    white-space: normal;
-    color: var(--text-color);
-    font-weight: normal;
-    text-shadow: none;
-    font-size: 1rem;
-    background: transparent;
-    backdrop-filter: none;
-    padding: 0;
-    border-radius: 0;
-    border: none;
-    box-shadow: none;
-    min-width: auto;
-    flex: 1;
-}
+            position: absolute;
+            white-space: nowrap;
+            color: var(--text-color);
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            min-width: 180px;
+        }
         
         .dark-mode .point-info {
             color: var(--text-color);
@@ -1308,12 +1306,6 @@
                 flex-direction: column;
             }
             
-            .timeline-point {
-        padding: 1rem;
-        margin-bottom: 1.5rem;
-    }
-
-            
             .timeline-container {
                 height: auto;
                 min-height: 800px;
@@ -1337,18 +1329,34 @@
                 font-size: 0.7rem;
             }
             
-            .timeline-point:nth-child(1) { top: 5%; left: 15%; }
-.timeline-point:nth-child(2) { top: 15%; right: 15%; }
-.timeline-point:nth-child(3) { top: 25%; left: 20%; }
-.timeline-point:nth-child(4) { top: 35%; right: 20%; }
-.timeline-point:nth-child(5) { top: 50%; left: 25%; }
-.timeline-point:nth-child(6) { top: 65%; right: 25%; }
-.timeline-point:nth-child(7) { top: 80%; left: 30%; }
-.timeline-point:nth-child(8) { top: 95%; right: 30%; }
-            
+           .timeline-point:nth-child(1) { top: 5%; left: 5%; } /* 2016 - Matric */
+.timeline-point:nth-child(2) { top: 15%; right: 5%; } /* 2019 - Educational Facilitator */
+.timeline-point:nth-child(3) { top: 25%; left: 5%; } /* 2020-2024 - Sales Rep */
+.timeline-point:nth-child(4) { top: 35%; right: 5%; } /* 2022 - Census Enumerator */
+.timeline-point:nth-child(5) { top: 50%; left: 5%; } /* 2023 - N6 Management */
+.timeline-point:nth-child(6) { top: 65%; right: 5%; } /* 2024-Present - Developer */
+.timeline-point:nth-child(7) { top: 80%; left: 5%; } 
+
+            .timeline-point:nth-child(1),
+.timeline-point:nth-child(2),
+.timeline-point:nth-child(3),
+.timeline-point:nth-child(4),
+.timeline-point:nth-child(5),
+.timeline-point:nth-child(6),
+.timeline-point:nth-child(7),
+.timeline-point:nth-child(8) {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  transform: none;
+}
+
             .carousel-container {
                 height: 380px;
             }
+
             
             .carousel-item {
                 width: 220px;
@@ -1374,11 +1382,6 @@
             .projects-grid {
                 grid-template-columns: 1fr;
             }
-.timeline-grid {
-        grid-template-columns: 1fr;
-    }
-
-
             
             .contact-content {
                 flex-direction: column;
@@ -1773,7 +1776,7 @@
                 </div>
                 
                 <div class="contact-form">
-                    <form id="contactForm">
+                     <form id="contactForm" action="https://formspree.io/f/xovdopjk" method="POST">
                         <div class="form-group">
                             <input type="text" name="name" class="form-control" placeholder="Your Name" required>
                         </div>
