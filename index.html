@@ -6,30 +6,39 @@
   <title>Alulutho Mihlali Dumani - Portfolio</title>
   <link rel="stylesheet" href="style.css"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <script defer src="script.js"></script>
 </head>
 <body>
   <!-- Navbar -->
   <nav class="navbar">
-    <div class="logo">Alulutho Dumani</div>
-    <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#timeline">Timeline</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div class="mode-toggle">
+  <div class="logo">Alulutho Dumani</div>
+
+  <div class="hamburger" id="hamburger">
+    <i class="fas fa-bars"></i>
+  </div>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#timeline">Timeline</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+
+ <div class="mode-toggle">
   <input type="checkbox" id="darkModeToggle">
   <label for="darkModeToggle" class="toggle-label">
-    <span class="icon sun">☀️</span>
-    <span class="icon moon">🌙</span>
+    <i class="fas fa-sun icon sun"></i>
+    <i class="fas fa-moon icon moon"></i>
   </label>
 </div>
 
-  </nav>
+</nav>
+
 
   <!-- Hero -->
   <section id="home" class="hero">
@@ -40,8 +49,8 @@
         <p class="line">> console.log("👩🏽‍💻 I am a developer — I code, I create, I grow.")</p>
         <p class="line">> console.log("📌 Open to opportunities | Passionate about tech | Ready to innovate.")</p>
       </div>
-      <a href=" https://docs.google.com/document/d/1DvAd7OSwfwjq8c1hY75Z2AxhKtn6S2VoVdPzg1IaTlA/edit?usp=sharing"class="btn">Resume</a>
-      <a href="#projects" class="btn secondary">View Projects</a>
+      <a href=" https://drive.google.com/file/d/1N6vGnS2dBMf9KW_tErhywBr-GeOSU_Op/view?usp=sharing"class="btn">Resume</a>
+      <a href="#projects" class="btn secondary">Projects</a>
     </div>
   </section>
 
@@ -67,146 +76,235 @@
   <section id="timeline" class="section">
     <h2 class="section-title">Timeline</h2>
     <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-icon">🎓</div>
-        <div class="timeline-content">
-          <h3>2016 - Matric</h3>
-          <p>Hexagon High School</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-icon">📚</div>
-        <div class="timeline-content">
-          <h3>2019 - Educational Facilitator</h3>
-          <p>Edunova</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-icon">📊</div>
-        <div class="timeline-content">
-          <h3>2022 - Census Enumerator</h3>
-          <p>Statistics SA</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-icon">📖</div>
-        <div class="timeline-content">
-          <h3>2023 - N6 Management</h3>
-          <p>IKHALA TVET College</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-icon">💼</div>
-        <div class="timeline-content">
-          <h3>2020-2024 - Sales Representative</h3>
-          <p>WTD</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-icon">💻</div>
-        <div class="timeline-content">
-          <h3>2024-Present - Full-Stack Developer</h3>
-          <p>Life Choices Academy</p>
-        </div>
-      </div>
-    </div>
+   <div class="timeline-item">
+  <div class="timeline-icon"><i class="fas fa-graduation-cap"></i></div>
+  <div class="timeline-content">
+    <h3>2016 - Matric</h3>
+    <p>Hexagon High School</p>
+  </div>
+</div>
+
+<div class="timeline-item">
+  <div class="timeline-icon"><i class="fas fa-book"></i></div>
+  <div class="timeline-content">
+    <h3>2019 - Educational Facilitator</h3>
+    <p>Edunova</p>
+  </div>
+</div>
+
+<div class="timeline-item">
+  <div class="timeline-icon"><i class="fas fa-chart-line"></i></div>
+  <div class="timeline-content">
+    <h3>2022 - Census Enumerator</h3>
+    <p>Statistics SA</p>
+  </div>
+</div>
+
+<div class="timeline-item">
+  <div class="timeline-icon"><i class="fas fa-book-open"></i></div>
+  <div class="timeline-content">
+    <h3>2023 - N6 Management</h3>
+    <p>IKHALA TVET College</p>
+  </div>
+</div>
+
+<div class="timeline-item">
+  <div class="timeline-icon"><i class="fas fa-briefcase"></i></div>
+  <div class="timeline-content">
+    <h3>2020-2024 - Sales Representative</h3>
+    <p>WTD</p>
+  </div>
+</div>
+
+<div class="timeline-item">
+  <div class="timeline-icon"><i class="fas fa-laptop-code"></i></div>
+  <div class="timeline-content">
+    <h3>2024-Present - Full-Stack Developer</h3>
+    <p>Life Choices Academy</p>
+  </div>
+</div>
+</div>
   </section>
 
   <!-- Skills -->
-  <section id="skills" class="section">
-    <h2 class="section-title">Skills</h2>
-    <div class="skills-grid">
-      <div class="skill">
-        <h3>HTML</h3>
-        <div class="progress"><span style="width: 100%"></span></div>
-      </div>
-      <div class="skill">
-        <h3>CSS</h3>
-        <div class="progress"><span style="width: 100%"></span></div>
-      </div>
-      <div class="skill">
-        <h3>JavaScript</h3>
-        <div class="progress"><span style="width: 100%"></span></div>
-      </div>
-      <div class="skill">
-        <h3>Vue.js</h3>
-        <div class="progress"><span style="width: 100%"></span></div>
-      </div>
-      <div class="skill">
-        <h3>Node.js</h3>
-        <div class="progress"><span style="width: 100%"></span></div>
-      </div>
-      <div class="skill">
-        <h3>MySQL</h3>
-        <div class="progress"><span style="width: 100%"></span></div>
-      </div>
+ <!-- Skills -->
+<section id="skills" class="section">
+  <h2 class="section-title">Skills</h2>
+  <div class="skills-grid">
+    <!-- Frontend -->
+    <div class="skill">
+      <h3>HTML</h3>
+      <div class="progress"><span style="width: 100%"></span></div>
     </div>
-  </section>
+    <div class="skill">
+      <h3>CSS</h3>
+      <div class="progress"><span style="width: 100%"></span></div>
+    </div>
+    <div class="skill">
+      <h3>JavaScript</h3>
+      <div class="progress"><span style="width: 100%"></span></div>
+    </div>
+    <div class="skill">
+      <h3>Vue.js</h3>
+      <div class="progress"><span style="width: 100%"></span></div>
+    </div>
+    <div class="skill">
+      <h3>React</h3>
+      <div class="progress"><span style="width: 100%"></span></div>
+    </div>
+    <div class="skill">
+      <h3>Flutter (Dart)</h3>
+      <div class="progress"><span style="width: 100%"></span></div>
+    </div>
 
-  <!-- Projects -->
-  <section id="projects" class="section">
-    <h2 class="section-title">Projects</h2>
-    <div class="projects-grid">
-      <div class="project-card">
-        <img src="images/Screenshot 2025-07-07 101737.png" alt="Hype Project"/>
-        <div class="card-content">
+    <!-- Backend -->
+    <div class="skill">
+      <h3>Node.js</h3>
+      <div class="progress"><span style="width: 100%"></span></div>
+    </div>
+    <div class="skill">
+      <h3>PHP</h3>
+      <div class="progress"><span style="width: 100%"></span></div>
+    </div>
+    <div class="skill">
+      <h3>Python</h3>
+      <div class="progress"><span style="width: 100%"></span></div>
+    </div>
+
+    <!-- Databases -->
+    <div class="skill">
+      <h3>MySQL</h3>
+      <div class="progress"><span style="width: 100%"></span></div>
+    </div>
+    <div class="skill">
+      <h3>Firebase</h3>
+      <div class="progress"><span style="width: 100%"></span></div>
+    </div>
+
+    <!-- Tools -->
+    <div class="skill">
+      <h3>Git & GitHub</h3>
+      <div class="progress"><span style="width: 100%"></span></div>
+    </div>
+    <div class="skill">
+      <h3>Figma</h3>
+      <div class="progress"><span style="width: 100%"></span></div>
+    </div>
+  </div>
+</section>
+
+
+  
+ <!-- Projects -->
+<section id="projects" class="section">
+  <h2 class="section-title">Projects</h2>
+  <div class="projects-grid">
+
+    <!-- Project 1 -->
+    <div class="project-card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="images/Screenshot 2025-07-10 112008.png" alt="Hype Project"/>
           <h3>Hype E-commerce</h3>
+        </div>
+        <div class="card-back">
           <p>E-commerce platform with catalog, cart, and payments.</p>
           <a href="https://hype-module-3-project-witv.vercel.app/" target="_blank">View Demo</a>
         </div>
       </div>
-      <div class="project-card">
-        <img src="images/Black White Minimalist Initials Monogram Jewelry Logo.png" alt="Portfolio"/>
-        <div class="card-content">
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project-card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="images/Black White Minimalist Initials Monogram Jewelry Logo.png" alt="Portfolio"/>
           <h3>Personal Portfolio</h3>
+        </div>
+        <div class="card-back">
           <p>Responsive portfolio site to showcase projects.</p>
           <a href="https://aluluthomihlalidumani.fwh.is/" target="_blank">View Demo</a>
         </div>
       </div>
-      <div class="project-card">
-        <img src="images/Screenshot 2025-07-10 112008.png" alt="Visio Challenge"/>
-        <div class="card-content">
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project-card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="images/Screenshot 2025-07-07 101737.png" alt="Visio Challenge"/>
           <h3>Visio Challenge</h3>
+        </div>
+        <div class="card-back">
           <p>HTML, CSS & jQuery responsive challenge task.</p>
           <a href="https://elemental-challenge.vercel.app/" target="_blank">View Demo</a>
         </div>
       </div>
     </div>
-      <div class="project-card">
-        <img src="images/Screenshot 2025-07-10 112008.png" alt="Visio Challenge"/>
-        <div class="card-content">
-          <h3>Price PPulse</h3>
-          <p>Ever had a problem of seeing specials being advertised or thinking a specific item costs some amount, only to get to these retailers and it’s not that price. Well this price comparison app doesn’t just mitigate that but it also shows you the cheapest product across four major retailers. Built using Flutter(Dart) and a Python Web Scraping backend with Firebase as it’s preferred database.</p>
+
+    <!-- Project 4 -->
+    <div class="project-card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="images/image.webp" alt="Price Pulse"/>
+          <h3>Price Pulse</h3>
+        </div>
+        <div class="card-back">
+          <p>Price comparison app showing cheapest products across retailers. Built with Flutter (Dart), Python web scraping backend, and Firebase.</p>
           <a href="https://github.com/keanan557/Price-Pulse" target="_blank">View Demo</a>
         </div>
       </div>
     </div>
-      <div class="project-card">
-        <img src="images/Screenshot 2025-07-10 112008.png" alt="Visio Challenge"/>
-        <div class="card-content">
-          <h3>Iliso - Digital Employee Management Tracking System</h3>
-          <p>A digital employee tracking system using NFC cards to access facilities and for safety purposes(fire drills etc.). Built using HTML, CSS, JavaScript, Python(NFC and Raspberry Pi) and PHP with a MySQL database.</p>
+
+    <!-- Project 5 -->
+    <div class="project-card">
+      <div class="card-inner">
+        <div class="card-front">
+          <img src="images/Screenshot 2025-07-10 112008.png" alt="Iliso"/>
+          <h3>Iliso - Employee Management</h3>
+        </div>
+        <div class="card-back">
+          <p>Digital employee tracking system with NFC cards, safety tracking, and MySQL backend. Built with HTML, CSS, JS, Python, PHP.</p>
           <a href="https://atracker.lcstudio-incubate.co.za/" target="_blank">View Demo</a>
         </div>
       </div>
     </div>
-  </section>
+<!-- Project 6 -->
+<div class="project-card">
+  <div class="card-inner">
+    <div class="card-front">
+      <img src="/images/Untitled design.png" alt="Social Media Expert"/>
+      <h3>Social Media Expert</h3>
+    </div>
+    <div class="card-back">
+      <p>A modern platform for social media expertise and influencer growth strategies. Built with responsive design and interactive UI features.</p>
+      <a href="https://social-media-expert-alu.vercel.app/" target="_blank">View Demo</a>
+    </div>
+  </div>
+</div>
+
+  </div>
+</section>
+
 
   <!-- Contact -->
   <section id="contact" class="section">
     <h2 class="section-title">Get In Touch</h2>
     <div class="contact-container">
       <div class="contact-info">
-        <p>📍 Cape Town, South Africa</p>
-        <p>📧 aluluthodumani99@gmail.com</p>
-        <p>📱 +27 61 654 3230</p>
-      </div>
-      <form class="contact-form">
-        <input type="text" placeholder="Name" required>
-        <input type="email" placeholder="Email" required>
-        <textarea placeholder="Message" required></textarea>
-        <button type="submit" class="btn">Send</button>
-      </form>
+     <div class="contact-info">
+  <p><i class="fas fa-map-marker-alt"></i> Cape Town, South Africa</p>
+  <p><i class="fas fa-envelope"></i> aluluthodumani99@gmail.com</p>
+  <p><i class="fas fa-phone"></i> +27 61 654 3230</p>
+</div>
+
+     <form class="contact-form" action="https://formspree.io/f/xovdopjk" method="POST">
+  <input type="text" name="name" placeholder="Name" required>
+  <input type="email" name="email" placeholder="Email" required>
+  <textarea name="message" placeholder="Message" required></textarea>
+  <button type="submit" class="btn">Send</button>
+</form>
+
     </div>
   </section>
 

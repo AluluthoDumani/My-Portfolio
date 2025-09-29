@@ -59,11 +59,16 @@ body.dark .logo {
 }
 
 .nav-links {
-  list-style: none;
+  flex: 1;
   display: flex;
+  justify-content: center;
   gap: 1.5rem;
 }
-
+.mode-toggle {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
 .nav-links a {
   text-decoration: none;
   color: inherit;
@@ -88,11 +93,67 @@ body.dark .nav-links a::after {
 
 .nav-links a:hover::after {
   width: 100%;
+}/* Hamburger menu (hidden on desktop) */
+.hamburger {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--accent-light);
 }
+
+body.dark .hamburger {
+  color: var(--accent-dark);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: var(--bg-light);
+    flex-direction: column;
+    width: 200px;
+    padding: 1rem;
+    gap: 1rem;
+    display: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+
+  body.dark .nav-links {
+    background: var(--bg-dark);
+  }
+
+  .nav-links.show {
+    display: flex;
+    animation: slideIn 0.3s ease forwards;
+  }
+
+  @keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+}
+
+
 
 /* Toggle switch */
 .mode-toggle {
-  margin-left: 1rem;
+  margin-left: auto; /* pushes it to the far right */
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .mode-toggle {
+    margin-left: 0; /* reset for mobile */
+    margin-top: 0.5rem;
+    justify-content: center;
+  }
 }
 
 .toggle-label {
@@ -117,14 +178,55 @@ body.dark .nav-links a::after {
   transition: var(--transition);
 }
 
-#darkModeToggle:checked + .toggle-label {
-  background: var(--accent-light);
+/* Hide the checkbox */
+#darkModeToggle {
+  display: none;
 }
 
-#darkModeToggle:checked + .toggle-label::after {
-  transform: translateX(20px);
-  background: var(--accent-dark);
+/* Base toggle styling */
+.toggle-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 50px;
+  height: 24px;
+  background: #ccc;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 0 5px;
+  box-sizing: border-box;
+  position: relative;
 }
+
+/* Sun & moon icons */
+.toggle-label .icon {
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.toggle-label .sun {
+  color: #fbbf24;
+  transform: translateX(-10px);
+}
+
+.toggle-label .moon {
+  color: #a78bfa;
+  transform: translateX(10px);
+}
+
+/* Show sun in light mode */
+#darkModeToggle:not(:checked) + .toggle-label .sun {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Show moon in dark mode */
+#darkModeToggle:checked + .toggle-label .moon {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 
 /* ========================
    Hero Section
@@ -270,19 +372,28 @@ body.dark .timeline {
   position: absolute;
   left: -40px;
   top: 0;
-  background: var(--accent-light);
-  color: white;
-  width: 30px;
-  height: 30px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 16px;
+  color: white;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.25);
 }
 
 body.dark .timeline-icon {
   background: var(--accent-dark);
 }
+
+.timeline-item:nth-child(1) .timeline-icon { background: #f59e0b; } /* matric - orange */
+.timeline-item:nth-child(2) .timeline-icon { background: #3b82f6; } /* facilitator - blue */
+.timeline-item:nth-child(3) .timeline-icon { background: #10b981; } /* census - green */
+.timeline-item:nth-child(4) .timeline-icon { background: #8b5cf6; } /* management - purple */
+.timeline-item:nth-child(5) .timeline-icon { background: #ef4444; } /* sales - red */
+.timeline-item:nth-child(6) .timeline-icon { background: #00b4d8; }
+
 
 .timeline-content h3 {
   margin: 0;
@@ -341,9 +452,12 @@ body.dark .progress span {
 
 .project-card {
   background: rgba(0,0,0,0.05);
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
-  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 body.dark .project-card {
@@ -351,7 +465,8 @@ body.dark .project-card {
 }
 
 .project-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 }
 
 .project-card img {
@@ -361,24 +476,123 @@ body.dark .project-card {
 }
 
 .card-content {
-  padding: 1rem;
+  padding: 1.2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .card-content h3 {
   margin: 0.5rem 0;
+  font-size: 1.3rem;
+}.card-content p {
+  flex-grow: 1;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  color: inherit;
 }
+
+
 
 .card-content a {
-  display: inline-block;
-  margin-top: 0.5rem;
-  color: var(--accent-light);
-  font-weight: 600;
+  align-self: flex-start;
+  padding: 0.5rem 1rem;
+  background: var(--accent-light);
+  color: #fff;
+  border-radius: 6px;
   text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease;
 }
 
+.card-content a:hover {
+  background: #0090ad;
+}
 body.dark .card-content a {
+  background: var(--accent-dark);
+}
+
+body.dark .card-content a:hover {
+  background: #5b0f91;
+}/* Flip Card Container */
+.project-card {
+  perspective: 1000px;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.project-card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Front & Back Faces */
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-front {
+  background: rgba(0,0,0,0.05);
+}
+
+.card-front img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-front h3 {
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+}
+
+.card-back {
+  background: var(--accent-light);
+  color: #fff;
+  transform: rotateY(180deg);
+  padding: 1rem;
+  text-align: center;
+}
+
+body.dark .card-back {
+  background: var(--accent-dark);
+}
+
+.card-back p {
+  margin-bottom: 1rem;
+}
+
+.card-back a {
+  padding: 0.5rem 1rem;
+  background: #fff;
+  color: var(--accent-light);
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+body.dark .card-back a {
   color: var(--accent-dark);
 }
+
+
 
 /* ========================
    Contact
@@ -528,4 +742,47 @@ html {
 #darkModeToggle:checked ~ .toggle-label .moon {
   opacity: 1;
   transform: translateX(0);
+}/* ========================
+   Responsive Fixes
+======================== */
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    padding: 1rem;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 1rem;
+    display: none;
+    width: 100%;
+    text-align: center;
+  }
+
+  .navbar.active .nav-links {
+    display: flex;
+  }
+
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .timeline {
+    padding-left: 1rem;
+  }
+
+  .timeline-icon {
+    left: -25px;
+    width: 25px;
+    height: 25px;
+    font-size: 12px;
+  }
+
+  .contact-container {
+    flex-direction: column;
+  }
 }
+
+
+
